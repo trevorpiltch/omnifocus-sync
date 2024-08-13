@@ -8,7 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mikerhodes/github-to-omnifocus/internal/gh"
+	"github.com/trevorpiltch/omnifocus-sync/internal/gh"
+  "github.com/trevorpiltch/omnifocus-sync/internal/shortcut"
 )
 
 var (
@@ -72,7 +73,7 @@ type Gateway struct {
 func (og *Gateway) GetIssues() ([]Task, error) {
   tasks := []Task{}
 
-  for i:=0; i < 4; i++ {
+  for i:=0; i < 5; i++ {
     project := GetAllProjects()[i]
     projectTasks, err := TasksForQuery(TaskQuery{
       ProjectName: project, 
@@ -87,6 +88,19 @@ func (og *Gateway) GetIssues() ([]Task, error) {
   }
 
 	return tasks, nil
+}
+
+func (og *Gateway) GetStories() ([]Task, error) {
+  projectTasks, err := TasksForQuery(TaskQuery{
+    ProjectName: "AlwaysArt 🎨", 
+    Tags: []string{"shortcut"}, 
+  })
+
+  if err != nil {
+    return nil, err
+  }
+
+  return projectTasks, nil
 }
 
 func (og *Gateway) GetPRs() ([]Task, error) {
@@ -158,6 +172,24 @@ func (og *Gateway) AddNotification(t gh.GitHubItem) error {
 	return nil
 }
 
+func (og *Gateway) AddStory(t shortcut.ShortcutStory) error {
+  log.Printf("AddStory: %s", t)
+  newT := NewOmnifocusTask {
+    ProjectName: "AlwaysArt 🎨",
+    Name: t.Title, 
+    Tags: []string{"shortcut"}, 
+    Note: t.HTMLURL, 
+  }
+
+  _, err := AddNewOmnifocusTask(newT)
+
+  if err != nil {
+    return fmt.Errorf("error adding story: %v", err)
+  }
+
+  return nil
+}
+
 func (og *Gateway) CompleteIssue(t Task) error {
 	log.Printf("CompleteIssue: %s", t)
 	err := MarkOmnifocusTaskComplete(t)
@@ -192,11 +224,13 @@ func GetProject(key string) string {
     return "iOS 🛹"
   } else if strings.Contains(key, "trevorpiltch.github.io") {
     return "Personal Website 💻"
+  } else if strings.Contains(key, "sc-") {
+    return "AlwaysArt 🎨"
   } else {
     return "GitHub 💾"
   }
 }
 
-func GetAllProjects() [4]string {
-  return [4]string{"Issues 🚀", "iOS 🛹", "GitHub 💾", "Personal Website 💻"}
+func GetAllProjects() []string {
+  return []string{"Issues 🚀", "iOS 🛹", "GitHub 💾", "Personal Website 💻", "AlwaysArt 🎨"}
 }

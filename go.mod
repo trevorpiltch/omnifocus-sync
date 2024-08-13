@@ -1,4 +1,4 @@
-module github.com/mikerhodes/github-to-omnifocus
+module github.com/trevorpiltch/omnifocus-sync
 
 go 1.17
 
