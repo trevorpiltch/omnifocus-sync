@@ -1,4 +1,4 @@
-package main
+package shortcut 
 
 import (
 	"fmt"
