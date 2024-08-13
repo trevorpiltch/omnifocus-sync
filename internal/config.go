@@ -10,6 +10,7 @@ import (
 )
 
 type Config struct {
+  // MARK: GitHub Config 
 	// API URL for GitHub
 	APIURL string
 	// Personal Access token
@@ -30,6 +31,10 @@ type Config struct {
 	NotificationTag string
 	// True if due date of today should be set on notifications
 	SetNotificationsDueDate bool
+  // MARK: Shortcut Config
+  APIKey string
+
+  Owner string
 }
 
 // LoadConfig loads JSON config from ~/.config/github2omnifocus/config.json
@@ -55,8 +60,9 @@ func LoadConfig() (Config, error) {
 		ReviewTag:               "review",
 		NotificationsProject:    "GitHub Notifications",
 		NotificationTag:         "notification",
-		SetNotificationsDueDate: true,
+    SetNotificationsDueDate: true,
 	}
+
 	err = json.Unmarshal(bytes, &c)
 	if err != nil {
 		return Config{}, fmt.Errorf("error unmarshalling config JSON from %s: %v", configPath, err)
