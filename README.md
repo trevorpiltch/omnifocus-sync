@@ -1,5 +1,6 @@
 # Add your GitHub Issues and PRs to Omnifocus
-
+From the original REPO, still working on the fork README.
+---
 A Go application that allows viewing assigned Github issues, PR reviews and
 notifications as tasks within Omnifocus, to allow for a more unified task
 management system.
