@@ -1,0 +1,7 @@
+[
+   {
+      "https://www.example.com": "project1", 
+      "https://www.example2.com": "project2"
+      "not actually a project": 123412
+   }
+]

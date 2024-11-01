@@ -1,0 +1,10 @@
+[
+  {
+    "URL": "https://www.example.com",
+    "OFName": "project1"
+  }, 
+  {
+    "URL": "https://www.example2.com", 
+    "OFName": "project2"
+  }
+]
