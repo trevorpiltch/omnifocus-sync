@@ -31,14 +31,14 @@ func LoadProjects(Path string) ([]Project, error) {
 	var bytes []byte
 	bytes, err := os.ReadFile(projectPath)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to load projects from %s", Path)
+		return nil, fmt.Errorf("failed to load projects from %s", Path)
 	}
 
 	var projects []Project
 
 	err = json.Unmarshal(bytes, &projects)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to decode projects")
+		return nil, fmt.Errorf("failed to decode projects %s", err)
 	}
 
 	return projects, nil
