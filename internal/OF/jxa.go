@@ -20,16 +20,11 @@ THIS SOFTWARE.
 package omnifocus
 
 import (
-  "embed"
 	"encoding/json"
 	"io"
 	"log"
 	"os"
 	"os/exec"
-)
-
-var (
-  jxa embed.FS
 )
 
 // ItemsForQuery returns a list of items from Omnifocus that
