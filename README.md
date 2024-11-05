@@ -1,5 +1,6 @@
 # OmniSync - Sync your Tools to OmniFocus
 [![Build Project](https://github.com/trevorpiltch/omnifocus-sync/actions/workflows/build.yaml/badge.svg)](https://github.com/trevorpiltch/omnifocus-sync/actions/workflows/build.yaml)
+[![Unit Test](https://github.com/trevorpiltch/omnifocus-sync/actions/workflows/unit_test.yaml/badge.svg)](https://github.com/trevorpiltch/omnifocus-sync/actions/workflows/unit_test.yaml)
 
 [OmniFocus](https://www.omnigroup.com/omnifocus) is a great tool that's a staple in many productive workflows. However, it lacks an easy way to sync with APIs of other tools. This project is a Go script that attemps to close that gap. </br>
 
