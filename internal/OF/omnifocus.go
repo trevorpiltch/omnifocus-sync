@@ -52,6 +52,10 @@ func (i NewOmniFocusItem) Key() string {
 	return i.Name
 }
 
+func (i NewOmniFocusItem) String() string {
+	return fmt.Sprintf("[%s] %s", i.ProjectName, i.Name)
+}
+
 // GetAllItems returns an array containing all of the items with the given tags for the given list of projects from OmniFocus
 func GetAllItems(projects []project.Project, tags []string) ([]Item, error) {
 	log.Print("[OF] Getting all items")
@@ -97,7 +101,7 @@ func AddItem(i NewOmniFocusItem) error {
 
 	_, err := AddNewOmnifocusItem(i)
 	if err != nil {
-		return fmt.Errorf("Failed to add item: %v", err)
+		return fmt.Errorf("failed to add item: %v", err)
 	}
 
 	return nil
@@ -108,7 +112,7 @@ func CompleteItem(i Item) error {
 	log.Printf("[OF] Complete item %s", i)
 	err := MarkOmnifocusItemComplete(i)
 	if err != nil {
-		return fmt.Errorf("Failed to complete item: %v", err)
+		return fmt.Errorf("failed to complete item: %v", err)
 	}
 
 	return nil

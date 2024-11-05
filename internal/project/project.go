@@ -38,7 +38,7 @@ func LoadProjects(Path string) ([]Project, error) {
 
 	err = json.Unmarshal(bytes, &projects)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode projects %s", err)
+		return nil, fmt.Errorf("failed to decode projects")
 	}
 
 	return projects, nil

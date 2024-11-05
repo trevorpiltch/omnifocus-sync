@@ -5,7 +5,7 @@ build:
 	go build ./cmd/omnisync
 
 test:
-	go test ./...
+	go test ./... -v
 
 clean: 
 	rm -rf ./cmd/omnisync/main
