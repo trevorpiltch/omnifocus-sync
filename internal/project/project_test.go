@@ -9,11 +9,6 @@ import (
 )
 
 // MARK: SETUP
-func TestMain(m *testing.M) {
-	log.SetOutput(io.Discard)
-	os.Exit(m.Run())
-}
-
 // testDir is the source for where tests look the config file
 const testDir = "../../testData/"
 
@@ -29,6 +24,27 @@ var project2 = Project{
 	OFName: "project2",
 }
 
+// The collection of projects to use in testing
+var projects []Project
+
+func TestMain(m *testing.M) {
+	projects = []Project{project1, project2}
+	log.SetOutput(io.Discard)
+	os.Exit(m.Run())
+}
+
+// MARK: Project tests
+func TestProjectString(t *testing.T) {
+	project := Project{
+		URL:    "https://github.com",
+		OFName: "GitHub",
+	}
+
+	if project.String() != "GitHub: https://github.com" {
+		t.Fatal("Unexpected string conversion")
+	}
+}
+
 // MARK: LoadProjects tests
 // Tests the `LoadProjects` function with nominal data
 func TestLoadProjectsSuccess(t *testing.T) {
@@ -38,7 +54,6 @@ func TestLoadProjectsSuccess(t *testing.T) {
 	}
 
 	if len(projects) != 2 {
-
 		for project := range projects {
 			fmt.Println(project)
 		}
@@ -115,5 +130,36 @@ func TestGetProjectDoesNotExist(t *testing.T) {
 
 	if project != (Project{}) {
 		t.Fatal("Project is non empty")
+	}
+}
+
+// MARK: `ProjectFor` tests
+// Tests the “
+func TestProjectForSuccess(t *testing.T) {
+	project, err := ProjectFor("https://www.example.com", projects)
+	if err != nil {
+		t.Fatalf("Unexpected error: %s", err)
+	}
+	if project != project1 {
+		t.Fatalf("Unexpected project: %s", project)
+	}
+
+	project, err = ProjectFor("https://www.example2.com", projects)
+	if err != nil {
+		t.Fatalf("Unexpected error: %s", err)
+	}
+	if project != project2 {
+		t.Fatalf("Unexpected project: %s", project)
+	}
+}
+
+func TestProjectForNoMatch(t *testing.T) {
+	project, err := ProjectFor("notadomain.com", projects)
+	if err.Error() != "URL notadomain.com does not match any projects" {
+		t.Fatalf("Unexpected error: %s", err)
+	}
+
+	if project != (Project{}) {
+		t.Fatal("Expected empty project")
 	}
 }
