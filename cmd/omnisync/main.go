@@ -94,7 +94,7 @@ func toSetSource(l []omnifocus.NewOmniFocusItem) map[delta.Keyed]struct{} {
 			Name:        i.Name,
 			ProjectName: i.ProjectName,
 			Tags:        i.Tags,
-			Note:        i.Name,
+			Note:        i.Note,
 		}] = struct{}{}
 	}
 	return r
