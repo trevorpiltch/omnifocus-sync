@@ -1,0 +1,14 @@
+[
+    {
+      "URL": "https://api.github.com/repos/trevorpiltch/omnifocus-sync",
+      "OFName": "OmniSync ✔️"
+    },
+    {
+      "URL": "https://api.github.com/repos/trevorpiltch/example-repo",
+      "OFName": "Example"
+    },
+    {
+        "URL": "httsp://app.shortcut.com",
+        "OFName": "Shortcut Project"
+    }
+]

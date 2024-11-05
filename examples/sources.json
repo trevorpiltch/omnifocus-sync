@@ -1,0 +1,54 @@
+[
+    {
+      "Name": "GitHub Issues",
+      "URL": "https://api.github.com/issues",
+      "Headers": [
+        {
+          "Key": "Accept",
+          "Value": "application/vnd.github+json"
+        },
+        {
+          "Key": "Authorization",
+          "Value": "Bearer <API_TOKEN>"
+        },
+        {
+          "Key": "X-GitHub-Api-Version",
+          "Value": "2022-11-28"
+        }
+      ],
+      "Queries": "",
+      "Response": {
+        "DataField": "",
+        "Title": "title",
+        "URL": "url",
+        "Number": "number"
+      },
+      "Tags": [
+        "github"
+      ]
+    },
+    {
+      "Name": "Shortcut",
+      "URL": "https://api.app.shortcut.com/api/v3/search/stories",
+      "Headers": [
+        {
+          "Key": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Key": "Shortcut-Token",
+          "Value": "<API_TOKEN>"
+        }
+      ],
+      "Queries": "owner:owner name -is:completed",
+      "Response": {
+        "DataField": "data",
+        "Title": "name",
+        "URL": "app_url",
+        "Number": "id"
+      },
+      "Tags": [
+        "shortcut"
+      ]
+    }
+  ]
