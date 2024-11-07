@@ -1,0 +1,37 @@
+[
+  {
+  "Name": "Source1",
+  "URL": "www.example.com",
+  "Headers": [
+    {
+      "Key": "Header",
+      "Value": "Value"
+    }
+  ],
+  "Queries": "query",
+  "Response": {
+    "DataField": "",
+    "Title": "Title",
+    "URL": "url",
+    "Number": "number"
+  }, 
+  "Tags": [
+    "tag"
+  ]
+  },
+  {
+  "Name": "Source2",
+  "URL": "www.example2.com",
+  "Headers": [],
+  "Queries": "",
+  "Response": {
+    "DataField": "Data",
+    "Title": "Title",
+    "URL": "url",
+    "Number": "number"
+  }, 
+  "Tags": [
+    "tag2"
+  ]
+  }
+]

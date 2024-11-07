@@ -53,8 +53,12 @@ type Source struct {
 func (source Source) createURL() string {
 	params := url.Values{}
 
-	params.Add("query", source.Queries)
-	return source.URL + "?" + params.Encode()
+  if source.Queries != ""  {
+    params.Add("query", source.Queries)
+    return source.URL + "?" + params.Encode()
+  }
+
+  return source.URL
 }
 
 // Creates the request from the source using the given url
