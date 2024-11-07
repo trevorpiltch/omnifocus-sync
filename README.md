@@ -71,9 +71,7 @@ on run
     end tell
 end run
 ```
-
-Then in OmniFocus, open right click the toolbar and select "customize toolbar". From there, you should see an option for your script: select that and add it to your toolbar.
-
+Then open the automation menu in OmniFocus and go to configure. Select "Reveal in Finder" and copy your script into that directory. In OmniFocus, open right click the toolbar and select "customize toolbar". From there, you should see an option for your script: select that and add it to your toolbar.
 
 ## Contributing
 
